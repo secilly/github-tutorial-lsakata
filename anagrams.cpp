@@ -31,30 +31,21 @@ int main()
 
 // Function 1:
 // Pre-Conditions: takes in a string
-// Post-Conditions: returns the size
-int stringSize(string str) {
-
-    int size = str.length();
-    return size; // returns the size of the string input
-
-} // def end
-
-// Function 2:
-// Pre-Conditions: takes in a string
 // Post-Conditions: returns the string lowercase and only with letters (alphabetic)
 string unformatString(string str) {
-  
-    int size = stringSize(str);
+ 
+    string result;
+    int size = str.length();
 
     for (int i = 0; i < size; i++) {
         
         if (isalpha(str[i]) == true) {
-            str += tolower(str[i]); // adds char lower cased to str if it is alphabetical
+            result += tolower(str[i]); // adds char lower cased to str if it is alphabetical
         }
 
     } // for end
 
-    return str;
+    return result;
 
 } // def end
 
@@ -63,8 +54,9 @@ string unformatString(string str) {
 // Post-Conditions: returns the count of a letter in a string
 int letterCount(string str, char let) {
 
-    int count(0), size = stringSize(str); // creates count variable and gets string size
+    int count(0); // creates count variable and intializes to zero
     str = unformatString(str); // unformats string
+    int size = str.length();
 
     for (int i = 0; i < size; i++) {
         
@@ -83,9 +75,9 @@ int letterCount(string str, char let) {
 // Post-Conditions: compares the letter count between each string
 void compareStrings(string str1, string str2) {
 
-    int size1 = stringSize(str1), size2 = stringSize(str2);
     str1 = unformatString(str1);
     str2 = unformatString(str2);
+    int size1 = str1.length(), size2 = str2.length();
     
     if (size1 != size2) {
         cout << "The strings are not anagrams." << endl;
@@ -105,11 +97,11 @@ void compareStrings(string str1, string str2) {
 
     } // for end
 
-    if (anagram = true) {
+    if (anagram == true) {
         cout << "The strings are anagrams." << endl;
     }
     else {
-        cout << "The strings are anagrams." << endl;
+        cout << "The strings are not anagrams." << endl;
     }
 
 } // def end
