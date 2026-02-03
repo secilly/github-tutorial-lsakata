@@ -119,9 +119,14 @@ double stddev(int* array, int size) {
         sum += pow((array[i] - avg), 2.0);
     } // for end
     
-    double fraction = sum / (size - 1);
-
-    double std = pow(fraction, 0.5);
-    return std;
+    if (size - 1 < 2) {
+        double std = 1.00;
+        return std;
+    }
+    else {
+        double fraction = sum / (size - 1);
+        double std = pow(fraction, 0.5);
+        return std;
+    }
 
 } // def end
