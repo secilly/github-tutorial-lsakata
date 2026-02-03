@@ -97,6 +97,17 @@ void compareStrings(string str1, string str2) {
         }
 
     } // for end
+
+    for (int i = 0; i < size2; i++) { // iterates over str2
+
+        char c = str2[i]; // for every letter in str2 it compares its count to every letter in str1
+
+        if (letterCount(str2, c) != letterCount(str1, c)) { // if the count is not the same for a letter
+            anagrams = false; // bool value set to false
+            break; // and for loop ends prematurely
+        }
+
+    } // for end
     
     if (anagrams) { // if bool value stays true
         cout << "The strings are anagrams." << endl; // outputs that the strings are anagrams
