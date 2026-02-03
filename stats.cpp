@@ -120,7 +120,7 @@ double stddev(int* array, int size) {
     } // for end
     
     if (size - 1 < 2) {
-        double std = 1.00;
+        double std = 0.00;
         return std;
     }
     else {
