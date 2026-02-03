@@ -84,6 +84,11 @@ void compareStrings(string str1, string str2) {
         return; // ends function
     }
 
+    if (size1 == 0 && size2 == 0) {
+        cout << "The strings are not anagrams." << endl;
+        return;
+    }
+
     bool anagrams = true; // creates bool variable to control output
 
     for (int i = 0; i < size1; i++) { // iterates over str1
@@ -97,7 +102,7 @@ void compareStrings(string str1, string str2) {
 
     } // for end
 
-    /* for (int i = 0; i < size2; i++) { // iterates over str2
+    for (int i = 0; i < size2; i++) { // iterates over str2
 
         char c = str2[i]; // for every letter in str2 it compares its count to every letter in str1
 
@@ -106,21 +111,7 @@ void compareStrings(string str1, string str2) {
             break; // and for loop ends prematurely
         }
 
-    } // for end */
-    
-    for (int i = 0; i < size1; i++) {
-
-        char c = str1[i];
-
-        // skip already-checked letters
-        if (i > 0 && letterCount(str1.substr(0, i), c) > 0)
-            continue;
-
-        if (letterCount(str1, c) != letterCount(str2, c)) {
-            anagrams = false;
-        }
-
-    } // for end
+    } // for end 
     
     if (anagrams) { // if bool value stays true
         cout << "The strings are anagrams." << endl; // outputs that the strings are anagrams
