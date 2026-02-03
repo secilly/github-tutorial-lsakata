@@ -97,13 +97,28 @@ void compareStrings(string str1, string str2) {
 
     } // for end
 
-    for (int i = 0; i < size2; i++) { // iterates over str2
+    /* for (int i = 0; i < size2; i++) { // iterates over str2
 
         char c = str2[i]; // for every letter in str2 it compares its count to every letter in str1
 
         if (letterCount(str2, c) != letterCount(str1, c)) { // if the count is not the same for a letter
             anagrams = false; // bool value set to false
             break; // and for loop ends prematurely
+        }
+
+    } // for end */
+    
+    for (int i = 0; i < size1; i++) {
+
+        char c = str1[i];
+
+        // skip already-checked letters
+        if (i > 0 && letterCount(str1.substr(0, i), c) > 0)
+            continue;
+
+        if (letterCount(str1, c) != letterCount(str2, c)) {
+            cout << "The strings are not anagrams." << endl;
+            return;
         }
 
     } // for end
