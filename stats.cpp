@@ -24,31 +24,32 @@ int main() {
 
     cin >> size;
     
-    if (size < 1) {
-        cerr << "Error!\n";
+    if (size < 1) { // if size entered is not valid then main is terminated 
+        cerr << "Error!\n"; // after an error message
         exit(1);
     }
 
-    IntPtr array = new int[size];
+    IntPtr array = new int[size]; // creates dynamic pointer array called array
 
     cout << "Enter grades (each on new line):" << endl;
 
     for (int i = 0; i < size; i++) {
-        cin >> array[i];
+        cin >> array[i]; // user inputs as many elements as the size of the array
     } // for end
 
-    bubbleSort(array, size);
+    bubbleSort(array, size); // sorts array
     
-    double avg = average(array, size);
-    double med = median(array, size);
-    double std = stddev(array, size);
+    double avg = average(array, size); // function call of average set to variable avg
+    double med = median(array, size); // function call of median set to variable med
+    double std = stddev(array, size); // function call of stddev set to variable std
 
+    // formatted ouput:
     cout << "Here are some statistics:" << endl;
     cout << setw(9) << "Average: " << avg << endl;
     cout << setw(9) << "Median: " << med << endl;
     cout << setw(9) << "StdDev: " << std << endl;
 
-    delete [] array;
+    delete [] array; // delete operator used on array
 
     return 0;
 
@@ -74,34 +75,34 @@ void bubbleSort(int *array, int size) {
 
 // Function 1:
 // Pre-Condition: takes in a dynamic int array and its size
-// Post-Condition: returns the average of the indices 
+// Post-Condition: returns the average of the indices as a double
 double average (int *array, int size) {
 
     double sum (0), average;
 
     for (int i = 0; i < size; i++) {
-        sum += array[i];
+        sum += array[i]; // sums up all of the array indices
     } // for end
 
-    return average = sum/size;
+    return average = sum/size; // returns the total sum divided by the number of indices of the array
 
 } // def end
 
 
 // Function 2:
 // Pre-Condition: takes in a dynamic int array and its size
-// Post-Condition: returns the median of the array 
+// Post-Condition: returns the median of the array as a double
 double median(int *array, int size) {
     
-    int i = (size/2);
+    int i = (size/2); // creates a variable that is half the number of indices
 
-    if (size % 2 != 0) {
-        double median = array[i];
+    if (size % 2 != 0) { // if the number of indices is odd 
+        double median = array[i]; // returns the middle indice
         return median;
     }
-    else {
+    else { // if the number of indices is even
         double sum = array[i - 1] + array[i];
-        double median = sum/2;
+        double median = sum/2; // returns the sum of the two middle indices divided by two
         return median;
     }
 
@@ -109,24 +110,24 @@ double median(int *array, int size) {
 
 // Function 3:
 // Pre-Condition: takes in a dynamic int array and its size
-// Post-Condition: returns the standard deviation of the array
+// Post-Condition: returns the standard deviation of the array as a double
 double stddev(int* array, int size) {
 
-    double sum(0);
-    double avg = average(array, size);
+    double sum(0); // intializes variable sum to zero
+    double avg = average(array, size); // function call of average set to variable avg
 
-    for (int i = 0; i < size; i++) {
-        sum += pow((array[i] - avg), 2.0);
+    for (int i = 0; i < size; i++) { 
+        sum += pow((array[i] - avg), 2.0); // sums up all the indices subtracted by the avg to the power of two
     } // for end
     
-    if (size - 1 < 2) {
-        double std = 0.00;
+    if (size - 1 < 2) { // if the size of the array is one
+        double std = 0.00; // returns the std dev as zero
         return std;
     }
     else {
-        double fraction = sum / (size - 1);
-        double std = pow(fraction, 0.5);
-        return std;
+        double fraction = sum / (size - 1); // initalizes fraction to the value of sum divided 
+        double std = pow(fraction, 0.5); // by the size of the ray subtracted by one and then all 
+        return std; // to the power of one-half (square root)
     }
 
 } // def end
