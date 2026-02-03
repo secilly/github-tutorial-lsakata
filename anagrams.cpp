@@ -117,8 +117,7 @@ void compareStrings(string str1, string str2) {
             continue;
 
         if (letterCount(str1, c) != letterCount(str2, c)) {
-            cout << "The strings are not anagrams." << endl;
-            return;
+            anagrams = false;
         }
 
     } // for end
