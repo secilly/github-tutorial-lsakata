@@ -78,11 +78,6 @@ void compareStrings(string str1, string str2) {
     str1 = unformatString(str1); // unformats str1 reassigning it to str1
     str2 = unformatString(str2); // unformats str2 reassigning it to str2
     int size1 = str1.length(), size2 = str2.length(); // takes sizes of the unformatted strings
-    
-    if (size1 == 0 || size2 == 0) {
-        cout << "The strings are not anagrams." << endl;
-        return;
-    }
 
     if (size1 != size2) { // if the sizes of the unformatted strings are not equal to each other
         cout << "The strings are not anagrams." << endl; // outputs that they are not anagrams
