@@ -8,7 +8,6 @@
 using namespace std;
 
 // FUNCTION DECLARATIONS
-int stringSize(string str);
 string unformatString(string str);
 int letterCount(string str, char let);
 void compareStrings(string str1, string str2);
@@ -18,16 +17,17 @@ int main()
 {
     string input1, input2;
     cout << "Enter first string:" << endl;
-    getline(cin, input1);
+    getline(cin, input1); // input1 is initialized as user input
     cout << "Enter second string:" << endl;
-    getline(cin, input2);
+    getline(cin, input2); // input2 is initialized as user input 
 
-    compareStrings(input1, input2);
+    compareStrings(input1, input2); // calls function to compare the two inputs
+                                    // and outputs if they are anagrams or not
 
     return 0;
 }
 
-// FUNCTION DECLARATIONS
+// FUNCTION DEFINITIONS
 
 // Function 1:
 // Pre-Conditions: takes in a string
@@ -40,7 +40,7 @@ string unformatString(string str) {
     for (int i = 0; i < size; i++) {
         
         if (isalpha(str[i]) == true) {
-            result += tolower(str[i]); // adds char lower cased to str if it is alphabetical
+            result += tolower(str[i]); // adds char lower cased to result if it is alphabetical
         }
 
     } // for end
@@ -61,7 +61,7 @@ int letterCount(string str, char let) {
     for (int i = 0; i < size; i++) {
         
         if (str[i] == let) {
-            count += 1; // one is added to count when there is multiple(s)
+            count += 1; // one is added to count when there is a multiple of the same letter
         }
 
     } // for end
@@ -83,25 +83,27 @@ void compareStrings(string str1, string str2) {
         cout << "The strings are not anagrams." << endl;
         return;
     }
-    
-    bool anagram = true;
+
+    bool anagrams = true;
 
     for (int i = 0; i < size1; i++) {
         
         char c = str1[i];
 
         if (letterCount(str1, c) != letterCount(str2, c)) {
-            anagram = false;
+            bool anagrams = false;
             break;
         }
 
     } // for end
-
-    if (anagram == true) {
+    
+    if (anagrams) {
         cout << "The strings are anagrams." << endl;
     }
     else {
         cout << "The strings are not anagrams." << endl;
     }
+
+    return;
 
 } // def end
