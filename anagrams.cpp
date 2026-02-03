@@ -85,7 +85,7 @@ void compareStrings(string str1, string str2) {
     }
 
     if (str1.empty() || str2.empty()) { // if one of the unformatted strings are empty
-        cout << "The strings are not anagrams." << endl; // outputs that they are not anagrams
+        cout << "The strings are anagrams." << endl; // outputs that they are anagrams
         return; // ends function
     }
 
