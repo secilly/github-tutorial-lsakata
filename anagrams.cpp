@@ -35,7 +35,7 @@ int main()
 int stringSize(string str) {
 
     int size = str.length();
-    return size--;
+    return size;
 
 } // def end
 
@@ -76,7 +76,9 @@ int letterCount(string str, char let) {
         if (str[i] == let) {
             count += 1; // one is added to count when there is multiple(s)
             str.erase(i, 1); // removes the letter in the string
-            i -= 1; // sets index back one (so it does not skip any indices)
+        }
+        else {
+            i++; // sets index back one (so it does not skip any indices)
         }
 
     } // for end
@@ -91,6 +93,13 @@ int letterCount(string str, char let) {
 void compareStrings(string str1, string str2) {
 
     int size1 = stringSize(str1), size2 = stringSize(str2);
+    
+    if (size1 != size2) {
+        cout << "The strings are not anagrams." << endl;
+        return;
+    }
+    
+    bool anagram = true;
 
     for (int i = 0; i < size1; i++) {
 
@@ -99,14 +108,17 @@ void compareStrings(string str1, string str2) {
         int count1 = letterCount(str1, str1[0]);
 
         if (count2 != count1) {
-            cout << "The strings are not anagrams." << endl;
+            anagram = false;
             break;
         }
-        else {
-            continue;
-        }
+
     } // for end
 
-    cout << "The strings are anagrams." << endl;
+    if (anagram = true) {
+        cout << "The strings are anagrams." << endl;
+    }
+    else {
+        cout << "The strings are anagrams." << endl;
+    }
 
 } // def end
