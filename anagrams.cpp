@@ -80,12 +80,12 @@ void compareStrings(string str1, string str2) {
     int size1 = str1.length(), size2 = str2.length(); // takes sizes of the unformatted strings
 
     if (size1 != size2) { // if the sizes of the unformatted strings are not equal to each other
-        cout << "The strings are not anagrams." << endl; // outputs that they are not anagrams
+        cout << "The strings are not anagrams1." << endl; // outputs that they are not anagrams
         return; // ends function
     }
 
     if (str1.empty() || str2.empty()) { // if one of the unformatted strings are empty
-        cout << "The strings are anagrams." << endl; // outputs that they are anagrams
+        cout << "The strings are anagrams1." << endl; // outputs that they are anagrams
         return; // ends function
     }
 
@@ -114,10 +114,10 @@ void compareStrings(string str1, string str2) {
     } // for end 
     
     if (anagrams) { // if bool value stays true
-        cout << "The strings are anagrams." << endl; // outputs that the strings are anagrams
+        cout << "The strings are anagrams2." << endl; // outputs that the strings are anagrams
     }
     else { // if not 
-        cout << "The strings are not anagrams." << endl; // outputs that they are not anagrams
+        cout << "The strings are not anagrams2." << endl; // outputs that they are not anagrams
     }
 
     return;
