@@ -35,27 +35,22 @@ int main()
 int stringSize(string str) {
 
     int size = str.length();
-    return size;
+    return size; // returns the size of the string input
 
 } // def end
 
 // Function 2:
 // Pre-Conditions: takes in a string
-// Post-Conditions: returns the string lowercase and only with letters
+// Post-Conditions: returns the string lowercase and only with letters (alphabetic)
 string unformatString(string str) {
   
     int size = stringSize(str);
 
     for (int i = 0; i < size; i++) {
         
-        if (isalpha(str[i]) == false) {
-            str.erase(i, 1); // removes character if not alphabetic
+        if (isalpha(str[i]) == true) {
+            str += tolower(str[i]); // adds char lower cased to str if it is alphabetical
         }
-        else {
-            i++;
-        }
-
-        str[i] = tolower(str[i]); // puts char to lower case if alphabetic
 
     } // for end
 
@@ -65,20 +60,16 @@ string unformatString(string str) {
 
 // Function 2:
 // Pre-Conditions: takes in a string and a character
-// Post-Conditions: returns the count of a letter in a string and removes them
+// Post-Conditions: returns the count of a letter in a string
 int letterCount(string str, char let) {
 
-    int count(1), size = stringSize(str); // creates count variable and gets string size
-    unformatString(str); // unformats string
+    int count(0), size = stringSize(str); // creates count variable and gets string size
+    str = unformatString(str); // unformats string
 
     for (int i = 0; i < size; i++) {
         
         if (str[i] == let) {
             count += 1; // one is added to count when there is multiple(s)
-            str.erase(i, 1); // removes the letter in the string
-        }
-        else {
-            i++; // sets index back one (so it does not skip any indices)
         }
 
     } // for end
@@ -93,6 +84,8 @@ int letterCount(string str, char let) {
 void compareStrings(string str1, string str2) {
 
     int size1 = stringSize(str1), size2 = stringSize(str2);
+    str1 = unformatString(str1);
+    str2 = unformatString(str2);
     
     if (size1 != size2) {
         cout << "The strings are not anagrams." << endl;
@@ -102,12 +95,10 @@ void compareStrings(string str1, string str2) {
     bool anagram = true;
 
     for (int i = 0; i < size1; i++) {
+        
+        char c = str1[i];
 
-        int pos2 = str2.find(str1[0]);
-        int count2 = letterCount(str2, str2[pos2]);
-        int count1 = letterCount(str1, str1[0]);
-
-        if (count2 != count1) {
+        if (letterCount(str1, c) != letterCount(str2, c)) {
             anagram = false;
             break;
         }
