@@ -84,11 +84,6 @@ void compareStrings(string str1, string str2) {
         return; // ends function
     }
 
-    if (size1 == 0 && size2 == 0) {
-        cout << "The strings are not anagrams." << endl;
-        return;
-    }
-
     bool anagrams = true; // creates bool variable to control output
 
     for (int i = 0; i < size1; i++) { // iterates over str1
