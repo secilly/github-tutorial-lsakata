@@ -56,7 +56,6 @@ string unformatString(string str) {
 int letterCount(string str, char let) {
 
     int count(0); // creates count variable and intializes to zero
-    str = unformatString(str); // unformats string
     int size = str.length();
 
     for (int i = 0; i < size; i++) {
