@@ -91,7 +91,7 @@ void compareStrings(string str1, string str2) {
         char c = str1[i];
 
         if (letterCount(str1, c) != letterCount(str2, c)) {
-            bool anagrams = false;
+            anagrams = false;
             break;
         }
 
