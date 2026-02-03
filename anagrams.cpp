@@ -75,6 +75,11 @@ int letterCount(string str, char let) {
 // Post-Conditions: compares the letter count between each string
 void compareStrings(string str1, string str2) {
 
+    if (str1.empty() || str2.empty()) { // if one of the unformatted strings are empty
+        cout << "The strings are anagrams1." << endl; // outputs that they are anagrams
+        return; // ends function
+    }
+
     str1 = unformatString(str1); // unformats str1 reassigning it to str1
     str2 = unformatString(str2); // unformats str2 reassigning it to str2
     int size1 = str1.length(), size2 = str2.length(); // takes sizes of the unformatted strings
