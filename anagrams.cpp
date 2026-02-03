@@ -84,7 +84,7 @@ void compareStrings(string str1, string str2) {
         return; // ends function
     }
 
-    if (size1 == 0 || size2 == 0) { // if the sizes of the unformatted strings become zero then
+    if (size1 == 0 && size2 == 0) { // if the sizes of the unformatted strings become zero then
         cout << "The strings are not anagrams." << endl; // function outputs that they are not anagrams
         return; // ends function
     }
