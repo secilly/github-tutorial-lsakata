@@ -26,6 +26,7 @@ int main()
                                     // and outputs if they are anagrams or not
 
     return 0;
+
 } // main end
 
 // FUNCTION DEFINITIONS
@@ -75,38 +76,35 @@ int letterCount(string str, char let) {
 // Post-Conditions: compares the letter count between each string
 void compareStrings(string str1, string str2) {
 
-    if (str1.empty() && str2.empty()) { // if one of the unformatted strings are empty
-        cout << "The strings are not anagrams." << endl; // outputs that they are anagrams
+    if (str1.empty() && str2.empty()) { // if both of the unformatted strings are empty
+        cout << "The strings are not anagrams." << endl; 
         return; // ends function
     }
 
-    str1 = unformatString(str1); // unformats str1 and reassigns it to str1
-    str2 = unformatString(str2); // unformats str2 and reassigns it to str2
-    int size1 = str1.length(), size2 = str2.length(); // takes sizes of the unformatted strings
+    str1 = unformatString(str1); 
+    str2 = unformatString(str2); 
+
+    int size1 = str1.length(), size2 = str2.length(); 
 
     bool anagrams = true; // creates bool variable to control output
+    
+    if (size1 == size2) {
 
-    for (int i = 0; i < size1; i++) { // iterates over str1
-        
-        char c = str1[i]; // for every letter in str1 it compares its count to every letter in str2
+        for (int i = 0; i < size1; i++) { 
 
-        if (letterCount(str1, c) != letterCount(str2, c)) { // if the count is not the same for a letter
-            anagrams = false; // bool value set to false
-            break; // and for loop ends prematurely
-        }
+            char c = str1[i]; // for every letter in str1 it compares the count to the count of that letter in str2
+            if (letterCount(str1, c) != letterCount(str2, c)) { // if the count is not the same for a letter
+                anagrams = false; // bool value set to false
+                break; // and for loop ends prematurely
+            }
 
-    } // for end
+        } // for end
 
-   /* for (int i = 0; i < size2; i++) { // iterates over str2
+    }
 
-        char c = str2[i]; // for every letter in str2 it compares its count to every letter in str1
-
-        if (letterCount(str2, c) != letterCount(str1, c)) { // if the count is not the same for a letter
-            anagrams = false; // bool value set to false
-            break; // and for loop ends prematurely
-        }
-
-    } // for end */
+    else {
+        anagrams = false;
+    }
     
     if (anagrams) { // if bool value stays true
         cout << "The strings are anagrams." << endl; // outputs that the strings are anagrams
