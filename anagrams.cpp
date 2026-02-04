@@ -78,39 +78,24 @@ void compareStrings(string str1, string str2) {
     str1 = unformatString(str1); 
     str2 = unformatString(str2); 
 
-    if (str1.empty() && str2.empty()) { // if both of the unformatted strings are empty
+    if (str1.empty() || str2.empty()) {
         cout << "The strings are not anagrams." << endl;
         return;
     }
-    
-    int size1 = str1.length(), size2 = str2.length(); 
 
-    bool anagrams = true; // creates bool variable to control output
-    
-    if (size1 == size2) {
-        for (int i = 0; i < size1; i++) { 
-
-            char c = str1[i]; 
-
-            if (letterCount(str1, c) != letterCount(str2, c)) { // if the count is not the same for a letter
-                anagrams = false; // bool value set to false
-                break; 
-            }
-
-        } // for end
-    }
-
-    else {
-        anagrams = false;
-    }
-    
-    if (anagrams == true) { // if bool value stays true
-        cout << "The strings are anagrams." << endl;
-    }
-    else { // if not 
+    if (str1.length() != str2.length()) {
         cout << "The strings are not anagrams." << endl;
+        return;
     }
 
-    return;
+    for (int i = 0; i < str1.length(); i++) {
+        char c = str1[i];
+        if (letterCount(str1, c) != letterCount(str2, c)) {
+            cout << "The strings are not anagrams." << endl;
+            return;
+        }
+    }
+
+    cout << "The strings are anagrams." << endl;
 
 } // def end
