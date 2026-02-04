@@ -83,6 +83,11 @@ void compareStrings(string str1, string str2) {
         return;
     }
 
+    else if (str1.empty() || str2.empty()) {
+        cout << "The strings are not anagrams." << endl;
+        return;
+    }
+
     for (int i = 0; i < str1.length(); i++) {
         char c = str1[i];
         if (letterCount(str1, c) != letterCount(str2, c)) {
