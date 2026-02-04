@@ -22,7 +22,7 @@ int main()
     cout << "Enter second string:" << endl;
     getline(cin, input2); // input2 is initialized as user input 
 
-    compareStrings(input1, input2); /
+    compareStrings(input1, input2); 
 
     return 0;
 
@@ -75,14 +75,14 @@ int letterCount(string str, char let) {
 // Post-Conditions: compares the letter count between each string
 void compareStrings(string str1, string str2) {
 
-    if (str1.empty() && str2.empty()) { // if both of the unformatted strings are empty
-        cout << "The strings are not anagrams." << endl; 
-        return;
-    }
-
     str1 = unformatString(str1); 
     str2 = unformatString(str2); 
 
+    if (str1.empty() && str2.empty()) { // if both of the unformatted strings are empty
+        cout << "The strings are not anagrams." << endl;
+        return;
+    }
+    
     int size1 = str1.length(), size2 = str2.length(); 
 
     bool anagrams = true; // creates bool variable to control output
