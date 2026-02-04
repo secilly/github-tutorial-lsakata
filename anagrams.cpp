@@ -76,12 +76,7 @@ int letterCount(string str, char let) {
 void compareStrings(string str1, string str2) {
 
     str1 = unformatString(str1); 
-    str2 = unformatString(str2); 
-
-    if (str1.empty() || str2.empty()) {
-        cout << "The strings are not anagrams." << endl;
-        return;
-    }
+    str2 = unformatString(str2);
 
     if (str1.length() != str2.length()) {
         cout << "The strings are not anagrams." << endl;
