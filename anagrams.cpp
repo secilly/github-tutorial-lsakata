@@ -83,7 +83,7 @@ void compareStrings(string str1, string str2) {
         return;
     }
 
-    else if (str1.empty() || str2.empty()) {
+    else if(str1.empty() && str2.empty()) {
         cout << "The strings are not anagrams." << endl;
         return;
     }
