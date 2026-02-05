@@ -1,3 +1,4 @@
+
 #include <iostream> // for cout, cin, endl
 #include <cmath>    // for pow -- the only one you're allowed to use from this lib
 #include <iomanip>  // for setprecision, setw -- the only ones you're allowed to use from this lib
@@ -39,9 +40,9 @@ int main() {
 
     bubbleSort(array, size); // sorts array
     
-    double avg = average(array, size); // function call of average set to variable avg
-    double med = median(array, size); // function call of median set to variable med
-    double std = stddev(array, size); // function call of stddev set to variable std
+    double avg = average(array, size); 
+    double med = median(array, size); 
+    double std = stddev(array, size); 
 
     // formatted ouput:
     cout << "Here are some statistics:" << endl;
@@ -84,7 +85,7 @@ double average (int *array, int size) {
         sum += array[i]; // sums up all of the array indices
     } // for end
 
-    return average = sum/size; // returns the total sum divided by the number of indices of the array
+    return average = sum/size; // returns the sum divided by the number of indices of the array
 
 } // def end
 
@@ -94,7 +95,7 @@ double average (int *array, int size) {
 // Post-Condition: returns the median of the array as a double
 double median(int *array, int size) {
     
-    int i = (size/2); // creates a variable that is half the number of indices
+    int i = (size/2); // creates a variable that is half the size of the array
 
     if (size % 2 != 0) { // if the number of indices is odd 
         double median = array[i]; // returns the middle indice
@@ -113,11 +114,11 @@ double median(int *array, int size) {
 // Post-Condition: returns the standard deviation of the array as a double
 double stddev(int* array, int size) {
 
-    double sum(0); // intializes variable sum to zero
-    double avg = average(array, size); // function call of average set to variable avg
+    double sum(0); 
+    double avg = average(array, size); 
 
     for (int i = 0; i < size; i++) { 
-        sum += pow((array[i] - avg), 2.0); // sums up all the indices subtracted by the avg to the power of two
+        sum += pow((array[i] - avg), 2.0); // sums the indices subtracted by the avg and squared
     } // for end
     
     if (size - 1 < 2) { // if the size of the array is one
@@ -125,9 +126,113 @@ double stddev(int* array, int size) {
         return std;
     }
     else {
-        double fraction = sum / (size - 1); // initalizes fraction to the value of sum divided 
-        double std = pow(fraction, 0.5); // by the size of the ray subtracted by one and then all 
-        return std; // to the power of one-half (square root)
+        double fraction = sum / (size - 1); 
+        double std = pow(fraction, 0.5); // takes the square root of fraction 
+        return std; 
     }
+
+} // def end
+
+ anagrams.cpp
+ Download
+// Lily Sakata
+// A424161
+// anagrams.cpp
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+// FUNCTION DECLARATIONS
+
+string unformatString(string str);
+int letterCount(string str, char let);
+void compareStrings(string str1, string str2);
+
+
+int main()
+{
+    string input1, input2; // creates two strings
+    cout << "Enter first string:" << endl;
+    getline(cin, input1); // input1 is initialized as user input
+    cout << "Enter second string:" << endl;
+    getline(cin, input2); // input2 is initialized as user input 
+
+    compareStrings(input1, input2); 
+
+    return 0;
+
+} // main end
+
+// FUNCTION DEFINITIONS
+
+// Function 1:
+// Pre-Conditions: takes in a string
+// Post-Conditions: returns the string lowercase and only with letters (alphabetic)
+string unformatString(string str) {
+ 
+    string result;
+    int size = str.length();
+
+    for (int i = 0; i < size; i++) {
+        
+        if (isalpha(str[i]) != 0) {
+            result += tolower(str[i]); // adds char lower cased to result if it is alphabetical
+        }
+
+    } // for end
+
+    return result;
+
+} // def end
+
+// Function 2:
+// Pre-Conditions: takes in a string and a character
+// Post-Conditions: returns the count of a letter in a string
+int letterCount(string str, char let) {
+
+    int count(0); 
+    int size = str.length();
+
+    for (int i = 0; i < size; i++) {
+        
+        if (str[i] == let) {
+            count += 1; // one is added to count when there is a multiple of the same letter
+        }
+
+    } // for end
+
+    return count;
+
+} // def end
+
+// Function 3:
+// Pre-Conditions: takes in two strings
+// Post-Conditions: compares the letter count between each string
+void compareStrings(string str1, string str2) {
+
+    // unformats string inputs
+    str1 = unformatString(str1); 
+    str2 = unformatString(str2);
+
+    if (str1.length() != str2.length()) { // if the sizes are not equal
+        cout << "The strings are not anagrams." << endl;
+        return;
+    }
+
+    else {
+    	for (int i = 0; i < str1.length(); i++) {
+            char c = str1[i]; // if the letter count in str1 for 
+            if (letterCount(str1, c) != letterCount(str2, c)) { // a letter is not the same in str2
+            	cout << "The strings are not anagrams." << endl;
+            	return;
+            }
+    	} // for end
+
+    	cout << "The strings are anagrams." << endl;
+    }
+
+    return;
 
 } // def end
