@@ -1,3 +1,7 @@
+// Lily Sakata
+// A424161
+// vectorSplit.cpp
+
 #include <iostream> // for cin, cout
 #include <vector>   // for vector
 #include <string>   // for getline()
