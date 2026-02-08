@@ -47,11 +47,12 @@ int main(int argc, char *argv[]) {
 // Post-Condition: returns an integer in decimal representing the binary input
 int bin2d(string binstring) {
 
-    int size = binstring.length(), sum(0);
+    int size = binstring.length(), sum(0), p(0);
     
-    for (int i = 0; i < size; i++) {
+    for (int i = size - 1; i > 0; i--) { // starts from right to left
         int num = binstring[i] - '0';
-        sum += (num * pow(2, i - 1));
+        sum += (num * pow(2, p)); // sums up converted binary numbers
+        p++; // power increment
     } // for end
 
     return sum;
@@ -65,6 +66,7 @@ string dec2bh(string sdec, char bh) {
     string result;
     int denom; 
     int dec = atoi(sdec.c_str()); // convert sdec into int
+
     // assigns denom value based on char bh input
     if (bh == 'b') {
         denom = 2;
@@ -73,17 +75,22 @@ string dec2bh(string sdec, char bh) {
         denom = 16;
     }
     
+    // conversion
     while (dec > 0) {
-        int remain = dec % denom;
+        
+        int remain = dec % denom; // remainder
         char currentDigit;
-        if (remain < 10) {
-            currentDigit = (char)(remain + '0');
+
+        if (remain < 10) { 
+            currentDigit = (remain + '0');
         } 
-        else {
-            currentDigit = (char)(remain - 10 + 'A'); // For Hex A-F
+        else { // For Hex A-F (uses ASCII values)
+            currentDigit = (remain - 10 + 'A'); 
         }
+
+        // adds most recent remainder to left side of result
         result = currentDigit + result;
-        dec /= denom;
+        dec /= denom; // quotient
         
     } // while end
 
