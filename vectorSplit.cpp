@@ -41,9 +41,6 @@ int main() {
 
         } // for end
     }
-    else { // one component
-        cout << "The substring is: " << "\"" << result[0] << "\"";
-    }
 
     cout << endl; // ends with new line
 
