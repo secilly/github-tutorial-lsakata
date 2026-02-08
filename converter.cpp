@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     
     // runs functions depending on arg inputs
     if (mode == "b2d") { // binary to decimal
-        cout << b2d(value) << endl;
+        cout << bin2d(value) << endl;
     }
     else if (mode == "d2b") { // decimal to binary
         cout << dec2bh(value, 'b') << endl;
@@ -86,5 +86,7 @@ string dec2bh(string sdec, char bh) {
         dec /= denom;
         
     } // while end
-    
+
+    return result;
+
 } // def end
