@@ -24,13 +24,13 @@ int main(int argc, char *argv[]) {
     
     // runs functions depending on arg inputs
     if (mode == "b2d") { // binary to decimal
-        cout << bin2d(value) << endl;
+        cout << "The value in decimal is: " bin2d(value) << endl;
     }
     else if (mode == "d2b") { // decimal to binary
-        cout << dec2bh(value, 'b') << endl;
+        cout << "The value in binary is: " << dec2bh(value, 'b') << endl;
     } 
     else if (mode == "d2h") { // decimal to hex
-        cout << dec2bh(value, 'h') << endl;
+        cout << "The value in hexadecimal is: " << dec2bh(value, 'h') << endl;
     } 
     else { // if there are invalid args 
         cerr << "Usage: converter <d2b, d2h, b2d> <value>" << endl;
