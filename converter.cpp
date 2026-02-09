@@ -26,6 +26,7 @@ int main(int argc, char *argv[]) {
     if (mode == "b2d") { // binary to decimal
         if (bin2d(value) == -1) {
             cout << "Binary value contains non-binary digits." << endl;
+            return 0;
         }
         cout << "The value in decimal is: " << bin2d(value) << endl;
     }
