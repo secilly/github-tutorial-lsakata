@@ -1,3 +1,7 @@
+// Lily Sakata
+// A424161
+// lab05Test.cpp
+
 // IMPORTANT NOTE TO USER: 
 // The only parts of the program that you should change are:
 // 1. The function definitions that are currently on lines 30-32.
@@ -29,92 +33,49 @@ string dec2bh(string sdec, char bh);
 // THE FOLLOWING DEFINITIONS FOR THE 3 FUNCTIONS ARE STUBS.
 // REMOVE THEM AND THEN COPY YOUR OWN 3 FUNCTION DEFINITIONS:
 
-// Pre-Condition: takes in two strings 
-// Post-Condition: returns a string vector with the target string split with the specified delimiter
+// FUNCTION DEFINITIONS
+// Pre-Condition: takes in two strings (string to split and string to split by)
+// Post-Condition: returns a vector of strings that were split by the delimiter
 vector<string> split(string target, string delimiter) {
     
-    vector<string> result;
+    vector<string> result = {};
     int size = target.length(), position = 0;
     
-    bool nosubstring = true;
+    bool nosubstring = true; // bool to check if delimiter exists in string
     for (int i = 0; i < size; i++) {
         if (target[i] == delimiter[0]) {
-            nosubstring = false;
+            nosubstring = false; // if the delimiter is found in target bool value changed
         }
     } // for end
 
-    if (nosubstring == true) {
-        result.push_back(target);
+    if (nosubstring == true) { // if delimiter never found in target
+        result.push_back(target); // target is added to result
+        return result; 
+    }
+    
+    if (delimiter.length() == size) { // if target and delimiter lengths are the same
         return result;
     }
     
+    // runs as long as the delimiter is found in target
     while ((position = target.find(delimiter)) != string::npos) {
 
         string substring = target.substr(0, position);
+        // empty strings are not added to result
         if (!substring.empty()) {
             result.push_back(substring);
         }
+        // substring and delimiter erased from target
         target.erase(0, position + delimiter.length());
 
     } // while end
 
+    // when no delimiter exists rest of target added to result
     result.push_back(target);
+
     return result;
 
-} // def end
-
-// Lily Sakata
-// A424161
-// converter.cpp
-
-#include <iostream> // for cin, cout, endl
-#include <cstdlib>  // for exit()
-#include <cmath>    // for pow() function ONLY
-// YOU ARE NOT ALLOWED TO INCLUDE ANY OTHER LIBRARY!!! (zero grade penalty)
-using namespace std;
-
-// FUNCTION DECLARATIONS: YOU MUST DEFINE AND USE THESE (do not remove):
-//      You can declare/define other functions if you like as well,
-//      but you must use the 2 functions below.
-int bin2d(string binstring);
-string dec2bh(string sdec, char bh);
-
-int main(int argc, char *argv[]) {
-    
-// Checks number of args
-    if (argc != 3) {
-        cerr << "Usage: converter <d2b, d2h, b2d> <value>" << endl;
-        exit(1);
-    }
-    
-    // separates args to their specifications
-    string mode = argv[1];
-    string value = argv[2];
-    
-    // runs functions depending on arg inputs
-    if (mode == "b2d") { // binary to decimal
-        if (bin2d(value) == -1) {
-            cout << "Binary value contains non-binary digits." << endl;
-            return 0;
-        }
-        cout << "The value in decimal is: " << bin2d(value) << endl;
-    }
-    else if (mode == "d2b") { // decimal to binary
-        cout << "The value in binary is: " << dec2bh(value, 'b') << endl;
-    } 
-    else if (mode == "d2h") { // decimal to hex
-        cout << "The value in hexadecimal is: " << dec2bh(value, 'h') << endl;
-    } 
-    else { // if there are invalid args 
-        cerr << "Usage: converter <d2b, d2h, b2d> <value>" << endl;
-        exit(1);
-    }
-
-    return 0;
-    
-} // main end  
-
-// FUNCTION DEFINITIONS
+} // def end;
 
 // Pre-Condition: takes in a string of binary numbers
 // Post-Condition: returns an integer in decimal representing the binary input
