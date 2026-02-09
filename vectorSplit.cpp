@@ -57,19 +57,19 @@ int main() {
 // Post-Condition: returns a vector of strings that were split by the delimiter
 vector<string> split(string target, string delimiter) {
     
-    vector<string> result;
+    vector<string> result = {};
     int size = target.length(), position = 0;
     
+    if (target.empty() && delimiter.empty()) {
+        return result;
+    }
+
     bool nosubstring = true; // bool to check if delimiter exists in string
     for (int i = 0; i < size; i++) {
         if (target[i] == delimiter[0]) {
             nosubstring = false; // if the delimiter is found in target bool value changed
         }
     } // for end
-
-    if (target.empty() && delimiter.empty()) {
-        return result;
-    }
 
     if (nosubstring == true) { // if delimiter never found in target
         result.push_back(target); // target is added to result
