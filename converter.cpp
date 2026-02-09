@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     
     // runs functions depending on arg inputs
     if (mode == "b2d") { // binary to decimal
-        cout << "The value in decimal is: " bin2d(value) << endl;
+        cout << "The value in decimal is: " << bin2d(value) << endl;
     }
     else if (mode == "d2b") { // decimal to binary
         cout << "The value in binary is: " << dec2bh(value, 'b') << endl;
