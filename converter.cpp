@@ -51,17 +51,21 @@ int main(int argc, char *argv[]) {
 int bin2d(string binstring) {
 
     int size = binstring.length(), sum(0);
-    int p = size - 1;
-    
-    for (int i = size - 1; i > 0; i--) { // starts from right to left
-        
-        if ((binstring[i] - '0') != '0' && ((binstring[i] - '0') != '1')) {
+    int p = 0;
+
+    // check to see if string only contains binary numbers
+    for (int i = 0; i < size; i++) {
+        if (binstring[i] != '0' && binstring[i] != '1') {
             return -1;
         }
+    }
+    
+    for (int i = size - 1; i >= 0; i--) { // starts from right to left
 
         int num = binstring[i] - '0';
         sum += (num * pow(2, p)); // sums up converted binary numbers
-        p--; // power decrement
+        p++; // power increment
+
     } // for end
 
     return sum;
