@@ -20,7 +20,12 @@ int main() {
     cout << "Enter string to split:" << endl;
     getline(cin, input);
     cout << "Enter delimiter string:" << endl;
-    cin >> delimiter;
+    getline(cin, delimiter);
+
+    if (input.size() == 0 && delimiter.size() == 0) {
+        cout << "No substrings." << endl;
+        return 0;
+    }
 
     // Call function split()
     vector<string> result = split(input, delimiter);
@@ -60,10 +65,6 @@ vector<string> split(string target, string delimiter) {
     vector<string> result = {};
     int size = target.length(), position = 0;
     
-    if (target.empty() && delimiter.empty()) {
-        return result;
-    }
-
     bool nosubstring = true; // bool to check if delimiter exists in string
     for (int i = 0; i < size; i++) {
         if (target[i] == delimiter[0]) {
@@ -74,6 +75,10 @@ vector<string> split(string target, string delimiter) {
     if (nosubstring == true) { // if delimiter never found in target
         result.push_back(target); // target is added to result
         return result; 
+    }
+    
+    if (delimiter.length() == size) { // if target and delimiter lengths are the same
+        return result;
     }
     
     // runs as long as the delimiter is found in target
