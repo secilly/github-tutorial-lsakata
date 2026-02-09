@@ -28,18 +28,24 @@ int main() {
     // Prints vector string components wrapped in double quotes
     int rsize = result.size();
     
-    cout << "The substrings are: ";
+    if (rsize == 0) {
+        cout << "No substrings." << endl;
+    }
+
+    else {
+        cout << "The substrings are: ";
   
-    for (int i = 0; i < rsize; i++) {
+        for (int i = 0; i < rsize; i++) {
   
-        cout << "\"" << result[i] << "\"";
+            cout << "\"" << result[i] << "\"";
    
-        if (i < rsize - 1) { // comma printed up until last indice
+            if (i < rsize - 1) { // comma printed up until last indice
             cout << ", ";
-        }
+            }
 
-    } // for end
-
+        } // for end
+    }
+    
     cout << endl; // ends with new line
 
     return 0;
