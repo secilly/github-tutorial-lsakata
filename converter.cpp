@@ -55,7 +55,7 @@ int bin2d(string binstring) {
     
     for (int i = size - 1; i > 0; i--) { // starts from right to left
         
-        if ((binstring[i] - '0') != '0' || ((binstring[i] - '0') != '1')) {
+        if ((binstring[i] - '0') != '0' && ((binstring[i] - '0') != '1')) {
             return -1;
         }
 
