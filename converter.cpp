@@ -1,3 +1,7 @@
+// Lily Sakata
+// A424161
+// converter.cpp
+
 #include <iostream> // for cin, cout, endl
 #include <cstdlib>  // for exit()
 #include <cmath>    // for pow() function ONLY
