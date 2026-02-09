@@ -67,6 +67,10 @@ string dec2bh(string sdec, char bh) {
     int denom; 
     int dec = atoi(sdec.c_str()); // convert sdec into int
 
+    if (dec == 0) {
+        return "0";
+    }
+
     // assigns denom value based on char bh input
     if (bh == 'b') {
         denom = 2;
