@@ -67,6 +67,10 @@ vector<string> split(string target, string delimiter) {
         }
     } // for end
 
+    if (target.empty() && delimiter.empty()) {
+        return result;
+    }
+
     if (nosubstring == true) { // if delimiter never found in target
         result.push_back(target); // target is added to result
         return result; 
