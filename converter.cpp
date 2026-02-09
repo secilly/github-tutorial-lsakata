@@ -24,6 +24,9 @@ int main(int argc, char *argv[]) {
     
     // runs functions depending on arg inputs
     if (mode == "b2d") { // binary to decimal
+        if (bin2d(value) == -1) {
+            cout << "Binary value contains non-binary digits." << endl;
+        }
         cout << "The value in decimal is: " << bin2d(value) << endl;
     }
     else if (mode == "d2b") { // decimal to binary
@@ -47,12 +50,18 @@ int main(int argc, char *argv[]) {
 // Post-Condition: returns an integer in decimal representing the binary input
 int bin2d(string binstring) {
 
-    int size = binstring.length(), sum(0), p(0);
+    int size = binstring.length(), sum(0);
+    int p = size - 1;
     
     for (int i = size - 1; i > 0; i--) { // starts from right to left
+        
+        if ((binstring[i] - '0') != '0' || ((binstring[i] - '0') != '1') {
+            return -1;
+        }
+
         int num = binstring[i] - '0';
         sum += (num * pow(2, p)); // sums up converted binary numbers
-        p++; // power increment
+        p--; // power decrement
     } // for end
 
     return sum;
