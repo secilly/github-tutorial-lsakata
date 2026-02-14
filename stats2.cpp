@@ -49,7 +49,7 @@ int main () {
         if (i == size) {
             
             // create new array with more space
-            IntPtr newArray = new int[size + 1];
+            newArray = new int[size + 1];
             
             // copy old array to new array
             for (int i = 0; i < size; i++) {
