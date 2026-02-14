@@ -87,6 +87,7 @@ int main() {
     
     // Finally, print the results (see lab descriptions for examples)
 
+    // Print out rhyming pairs and count them
     int count(0);
     for (int i = 0; i < size - 1; i++) {
         if (compareWords(array[i], array[i+1])) {
