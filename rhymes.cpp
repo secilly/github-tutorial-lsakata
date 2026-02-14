@@ -70,16 +70,14 @@ int main() {
     // Finally, print the results (see lab descriptions for examples)
 
     int count(0);
-    for (int i = 0; i < size; i++) {
-        if (compareWords(array[i], array[i+1]) && i < size - 1) {
+    for (int i = 0; i < size - 1; i++) {
+        if (compareWords(array[i], array[i+1])) {
             cout << array[i] << " and " << array[i+1] << endl;
             count++;
         }
-        else if (compareWords(array[i], array[i+1]) && i == size - 1)
-            cout << array[i] << " and " << array[i+1] << endl;
-            count++;
-    } // for end i
+    } // for end 
 
+    double density = static_cast<double> (count) / size;
     if (count > 1) {
         cout << "There are " << count << " pairs of rhyming words." << endl;
     }
@@ -90,12 +88,15 @@ int main() {
         cout << "No rhymes found." << endl;
     }
     
-    double density = count/size;
+    if (count > 0) {
     cout << "There are " << size << " lines in this poem, so the rhyme-line density is: " 
         << density << endl;
+    }
+    else {
+        cout << "There are " << size << " lines in this poem." << endl;
+    }
 
     delete [] array;
-    delete [] newArray;
 
     return 0;
 }
@@ -108,10 +109,13 @@ string findLastWord(string line) {
     int size = line.size();
     int rposition = line.rfind(" ");
 
+    // if no space occurred then takes the whole line 
+    if (rposition == string::npos) {
+        return line;
+    }
+
     // takes last word from when last space occured to end of line
-    string lastWord = line.substr(rposition + 1, (size - 1) - rposition);
-    
-    return lastWord;
+    return line.substr(rposition + 1);
 
 } // def end
 
@@ -127,6 +131,7 @@ void cleanUp(string &word) {
         } 
         else { 
             word.erase(i, 1);
+            i--;
             size--;
         }
 
@@ -138,22 +143,15 @@ void cleanUp(string &word) {
 // Post-Condition:
 bool compareWords(string word1, string word2) {
     
-    int size1 = word1.size(), size2 = word2.size();
-    bool sameLetter = true;
-    
-    for (int i = size1 - 1; i >= size1 - 3; i--) { 
-        for (int j = size2 - 1; j >= size2 - 3; j--) {
-            if (word1[i] != word2[j]) {
-                sameLetter = false;
-            }
-        } // for j
+    int size1 = word1.size();
+    int size2 = word2.size();
+
+    for (int i = 1; i <= 2; i++) { 
+        if (word1[size1 - i] != word2[size2 - i]) {
+            return false;
+        }
     } // for i
     
-    if (sameLetter) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return true;
 
 } // def end
