@@ -1,3 +1,7 @@
+// Lily Sakata
+// A424161
+// search.cpp
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -42,6 +46,7 @@ vector<int> SeqSearchAll (int target, ifstream &ifs) {
     int i(0), num;
     vector<int> indexes = {};
 
+    // add index to vector if number matches target
     while (ifs >> num) {
         if (num == target)
             indexes.push_back(i);
@@ -49,6 +54,7 @@ vector<int> SeqSearchAll (int target, ifstream &ifs) {
         i++;
     } // while end
 
+    // if there were no matching numbers add -1 to vector
     if (indexes.empty()) {
         indexes.push_back(-1);
     }
