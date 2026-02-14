@@ -1,3 +1,7 @@
+// Lily Sakata
+// A424161
+// findnum.cpp
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -30,6 +34,7 @@ int FindNum (ifstream &ifs) {
     vector<int> nums = {};
     int num, size(0);
 
+    // add ints from input file to vector
     while (ifs >> num) {
         nums.push_back(num);
         size++;
@@ -46,8 +51,8 @@ int FindNum (ifstream &ifs) {
     // find the second greatest number in vector
     int secondMax = nums[0];
     for (int i = 1; i < size; i++) {
-        if (secondMax < nums[i] && nums[i] < max) {
-            secondMax = nums[i];;
+        if (secondMax < nums[i] && nums[i] < max) { // number has to be greater but less than the found max
+            secondMax = nums[i]; 
         }
     } // for end
     
