@@ -64,6 +64,11 @@ int main () {
 
     } // while end
 
+    // ends if dynamic array is empty
+    if (array.length == 0) {
+        return 0;
+    }
+    
     // debugging
     /*for (int i = 0; i < size; i++) {
         cout << i << ": " << array[i] << endl;
