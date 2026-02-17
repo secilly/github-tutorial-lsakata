@@ -73,7 +73,7 @@ int main () {
     size--;
 
     // ends if dynamic array is empty
-    if (array.length == 0) {
+    if (size == 0) {
         return 0;
     }
 
