@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <cctype>
 #include <cstdlib> // for exit
 #include <iomanip> // for precision
 using namespace std;
