@@ -63,11 +63,6 @@ int main () {
         }
 
     } // while end
-
-    // ends if dynamic array is empty
-    if (array.length == 0) {
-        return 0;
-    }
     
     // debugging
     /*for (int i = 0; i < size; i++) {
@@ -76,6 +71,11 @@ int main () {
 
     // get rid of last empty indice in array
     size--;
+
+    // ends if dynamic array is empty
+    if (array.length == 0) {
+        return 0;
+    }
 
     bubbleSort(array, size);
     double avg = average(array, size);
