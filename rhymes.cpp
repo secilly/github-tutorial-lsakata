@@ -35,7 +35,7 @@ int main() {
     }
 
     // Declare variables and arrays
-    int size(1), i(0);
+    int size(1), i(0), lineCount(0);
     string line;
     StrPtr array = new string[size];
     StrPtr newArray = nullptr;
@@ -45,6 +45,7 @@ int main() {
         
         // takes a line at a time
         getline(lineInput, line);
+        lineCount++;
     
         // skips blank lines
         if (line.empty()) {
@@ -59,65 +60,67 @@ int main() {
         if (lastWord.empty()) {
             continue;
         }
-
-        // adds unformatted word to array
-        array[i] = lastWord;
-        i++;
-
+        
         // when no space left in array
         if (i == size) { 
+
+            size++;
             
             // create new array with more space
-            newArray = new string[size + 1];
+            newArray = new string[size];
 
             // copy old array to new array
-            for (int i = 0; i < size; i++) {
-                newArray[i] = array[i];
+            for (int j = 0; j < size - 1; j++) {
+                newArray[j] = array[j];
             } // for end
 
             delete [] array;
             array = newArray;
-
-            size++;
         }
+
+        array[i] = lastWord;
+        i++;
 
     } // while end
 
-    size--; // get rid of extra indice at the end
+    lineInput.close();
+    
+    //size--; // get rid of extra indice at the end
     
     // Finally, print the results (see lab descriptions for examples)
 
     // Print out rhyming pairs and count them
-    int count(0);
+    int rhymeCount(0);
     for (int i = 0; i < size - 1; i++) {
         if (compareWords(array[i], array[i+1])) {
             cout << array[i] << " and " << array[i+1] << endl;
-            count++;
+            rhymeCount++;
         }
     } // for end 
 
     // Prints specific lines depending on number of rhyming pairs
-    double density = static_cast<double> (count) / size;
-    if (count > 1) {
-        cout << "There are " << count << " pairs of rhyming words." << endl;
+    double density = static_cast<double> (rhymeCount) / lineCount;
+    if (rhymeCount > 1) {
+        cout << "There are " << rhymeCount << " pairs of rhyming words." << endl;
     }
-    else if (count == 1) {
-        cout << "There is " << count << " pair of rhyming words." << endl;
+    else if (rhymeCount == 1) {
+        cout << "There is " << rhymeCount << " pair of rhyming words." << endl;
     }
     else {
         cout << "No rhymes found." << endl;
     }
     
-    if (count > 0) {
-    cout << "There are " << size << " lines in this poem, so the rhyme-line density is: " 
-        << density << endl;
+    cout << "There are " << lineCount << " lines in this poem";
+    if (rhymeCount > 0) {
+        cout << ", so the rhyme-line density is: " << density << endl;
     }
     else {
-        cout << "There are " << size << " lines in this poem." << endl;
+        cout << "." << endl;
     }
 
     delete [] array;
-
+    delete [] newArray;
+    
     return 0;
 
 } // main end
@@ -127,7 +130,6 @@ int main() {
 // Post-Condition: returns a string of the last word of the input line
 string findLastWord(string line) {
     
-    int size = line.size();
     int rposition = line.rfind(" ");
 
     // if no space occurred then takes the whole line 
@@ -147,13 +149,12 @@ void cleanUp(string &word) {
     int size = word.size();
     for (int i = 0; i < size; i++) {
         
-        if (isalpha(word[i]) != 0) { // if letter converts to lower case
+        if (isalpha(word[i])) { // if letter converts to lower case
             word[i] = tolower(word[i]);
         } 
         else { // deletes if not a letter
             word.erase(i, 1);
             i--;
-            size--;
         }
 
     } // for end
