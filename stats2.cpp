@@ -63,11 +63,6 @@ int main () {
         }
 
     } // while end
-    
-    // debugging
-    /*for (int i = 0; i < size; i++) {
-        cout << i << ": " << array[i] << endl;
-    }*/
 
     // get rid of last empty indice in array
     size--;
