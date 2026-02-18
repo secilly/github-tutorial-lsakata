@@ -147,7 +147,7 @@ void cleanUp(string &word) {
     for (int i = 0; i < size; i++) {
         
         if (isalpha(word[i])) { // if letter converts to lower case
-            cleaned += tolower(word[i]);
+            cleaned += tolower(static_cast<char>((word[i]));
         } 
 
     } // for end
@@ -163,6 +163,10 @@ bool compareWords(string word1, string word2) {
     int size1 = word1.size();
     int size2 = word2.size();
 
+    if (size1 < 2 || size2 < 2) {
+        return false;
+    }
+    
     // compares the last two letters in each word together
     string end1 = word1.substr(size1 - 2);
     string end2 = word2.substr(size2 - 2);
