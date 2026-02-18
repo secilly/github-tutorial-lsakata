@@ -1,3 +1,4 @@
+
 // Lily Sakata
 // A424161
 // rhymes.cpp
@@ -5,7 +6,6 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <cctype>
 #include <cstdlib> // for exit
 #include <iomanip> // for precision
 using namespace std;
@@ -46,8 +46,9 @@ int main() {
         
         // takes a line at a time
         getline(lineInput, line);
-        lineCount++;
     
+        lineCount++;
+
         // finds and cleans up last word in the line
         string lastWord = findLastWord(line);
         cleanUp(lastWord);
@@ -116,6 +117,7 @@ int main() {
     }
 
     delete [] array;
+
     return 0;
 
 } // main end
@@ -166,7 +168,7 @@ bool compareWords(string word1, string word2) {
     if (size1 < 2 || size2 < 2) {
         return false;
     }
-    
+
     // compares the last two letters in each word together
     string end1 = word1.substr(size1 - 2);
     string end2 = word2.substr(size2 - 2);
