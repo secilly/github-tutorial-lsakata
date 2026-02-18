@@ -147,7 +147,7 @@ void cleanUp(string &word) {
     for (int i = 0; i < size; i++) {
         
         if (isalpha(word[i])) { // if letter converts to lower case
-            cleaned += tolower(static_cast<char>((word[i]));
+            cleaned += tolower(static_cast<char>(word[i]));
         } 
 
     } // for end
