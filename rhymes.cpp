@@ -48,19 +48,9 @@ int main() {
         getline(lineInput, line);
         lineCount++;
     
-        // skips blank lines
-        if (line.empty()) {
-            continue;
-        }
-    
         // finds and cleans up last word in the line
         string lastWord = findLastWord(line);
         cleanUp(lastWord);
-    
-        // skip if cleanUp erased word
-        if (lastWord.empty()) {
-            continue;
-        }
 
         // adds unformatted word to array
         array[i] = lastWord;
@@ -126,7 +116,6 @@ int main() {
     }
 
     delete [] array;
-
     return 0;
 
 } // main end
@@ -178,11 +167,6 @@ bool compareWords(string word1, string word2) {
     string end1 = word1.substr(size1 - 2);
     string end2 = word2.substr(size2 - 2);
 
-    if (end1 == end2) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (end1 == end2);
 
 } // def end
