@@ -24,14 +24,14 @@ int main() {
         cerr << "Cannot open " << numFile << endl;
     }
 
-    // 
-    getFileSize(numInput, numFile);
+    // get size of input file
+    int size = getFileSize(numInput, numFile);
 
-    int size(1);
+    // create array of data
     array = new int[size];
-    newArray = new int nullptr;
     getArray(numInput, numFile, array[], size);
 
+    // print raw data
     cout << "Original array:" << endl;
     for (int i = 0; i < size; i++) {
         cout << array[i];
@@ -40,12 +40,16 @@ int main() {
         }
     }
 
+    // ask user for sorting method
     bool desc;
     cout << "Ascending (0) or Descending (1): ";
     cin >> desc;
 
-    cout << "Sorted Array:" << endl;
+    // run sorting
     sort(desc, array[], number_used, index);
+
+    // print sorted array 
+    cout << "Sorted Array:" << endl;
 
     return 0;
 }
