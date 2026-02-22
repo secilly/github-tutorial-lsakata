@@ -1,4 +1,7 @@
-// File: sfunctions.cpp
+// Lily Sakata
+// A424161
+// sfunctions.cpp
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -91,28 +94,14 @@ int getFileSize(ifstream& inf, string fname) {
 void getArray(ifstream& in, string fname, int arr[], int size) {
 
     in.open(fname);
-    int next, i(0), size(1);
+    int next, i(0);
 
     while (in >> next) {
         array[i] = next;
         i++;
-        
-        // create new array with more space
-        if (i == size) {
-            newArray= new int[size + 1];
-            for (int i = 0; i < size; i++) {
-                newArray[i] = array[i];
-            } // for end
-        }
-
-        delete [] array;
-        array = newArray;
-
-        size++;
-    
     } // while end
 
-    size = i; // size of array matches with number of indices
+    size = i; // size of data input matches with number of indices of array
     
     in.close(fname);
     
