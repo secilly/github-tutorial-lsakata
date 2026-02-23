@@ -41,6 +41,7 @@ int main() {
             cout << " ";
         }
     }
+    cout << endl;
 
     // ask user for sorting method
     bool desc;
@@ -49,7 +50,7 @@ int main() {
 
     // run sorting and print array once finished
     int number_used = size, index(0);
-    sort(desc, array, number_used, index);
+    sort(desc, array, index, number_used);
 
     delete [] array;
     return 0;
