@@ -44,7 +44,7 @@ int find_index_of_swap(bool desc, int a[], int start_index, int number_used) {
 // Post-Condition: prints out sorted array once finished selection sorting
 void sort(bool desc, int a[], int number_used, int index) {
 
-    if (index >= number_used - 1) {
+    if (index >= number_used) {
         for (int i = 0; i < number_used; i++) {
             cout << a[i];
             if (i < number_used - 1) {
