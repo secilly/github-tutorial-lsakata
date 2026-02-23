@@ -38,23 +38,25 @@ int find_index_of_swap(bool desc, int a[], int start_index, int number_used) {
 
 } // def end
 
-    void sort(bool desc, int a[], int number_used, int index) {
+// Pre-Condition: takes in bool for sorting method, int array, and integer bounds
+// Post-Condition: prints out sorted array once finished selection sorting
+void sort(bool desc, int a[], int number_used, int index) {
 
-        if (index >= number_used) {
-            for (int i = 0; i < number_used; i++) {
-                cout << a[i];
-                if (i < number_used - 1) {
-                    cout << " ";
-                }
-            } // for end
-            cout << endl;
-        }
+    if (index >= number_used) {
+        for (int i = 0; i < number_used; i++) {
+            cout << a[i];
+            if (i < number_used - 1) {
+                cout << " ";
+            }
+        } // for end
+        cout << endl;
+    }
 
-        int swap_idx = find_index_of_swap(desc, a, index, number_used);
-        swap_values(a[index], a[swap_idx]);
-        sort(desc, a, number_used, index++);
+    int swap_idx = find_index_of_swap(desc, a, index, number_used);
+    swap_values(a[index], a[swap_idx]);
+    sort(desc, a, number_used, index++);
 
-    } // def end
+} // def end
 
 // Pre-Condition: takes in an ifstream object and string
 // Post-Condition: returns an integer representing the size of the file
@@ -67,7 +69,7 @@ int getFileSize(ifstream& inf, string fname) {
         count++; // count indices
     } // while end
 
-    inf.close(fname); // close file
+    inf.close(); // close file
     return count;
 
 } // def end
@@ -80,12 +82,12 @@ void getArray(ifstream& in, string fname, int arr[], int size) {
     int next, i(0);
 
     while (in >> next) {
-        array[i] = next;
+        arr[i] = next;
         i++;
     } // while end
 
     size = i; // size of data input matches with number of indices of array
     
-    in.close(fname);
+    in.close();
     
 } // def end
