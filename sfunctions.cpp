@@ -88,8 +88,6 @@ void getArray(ifstream& in, string fname, int arr[], int size) {
         arr[i] = next;
         i++;
     } // while end
-
-    size = i; // size of data input matches with number of indices of array
     
     in.close();
     
