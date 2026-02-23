@@ -31,11 +31,11 @@ int main() {
 // Post-Condition: prints out each digit on its own line
 void printV(long int n) {
 
-    if (n < 10) { // base case
+    if (n < 10) { // base
         cout << n << endl;
     }
-    else {
-        printV(n/10); // recursion
+    else { // recursive
+        printV(n/10);
         cout << n % 10 << endl;
     }
 
