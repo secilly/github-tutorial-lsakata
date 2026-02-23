@@ -33,24 +33,31 @@ int main() {
     int* array = new int[size];
     getArray(numInput, numFile, array, size);
 
-    // print raw data
+    // print original array
     cout << "Original array:" << endl;
     for (int i = 0; i < size; i++) {
-        cout << array[i];
-        if (i < size - 1) {
-            cout << " ";
-        }
-    }
+        cout << array[i] << " ";
+    } // for end
     cout << endl;
 
     // ask user for sorting method
-    bool desc;
+    int choice;
     cout << "Ascending (0) or Descending (1): ";
-    cin >> desc;
+    cin >> choice;
 
-    // run sorting and print array once finished
+    bool desc = choice;
+
+    // run sorting 
     int number_used = size, index(0);
-    sort(desc, array, index, number_used);
+    sort(desc, array, number_used, index);
+
+    // print sorted array
+    cout << "Sorted array:" << endl;
+    for (int i = 0; i < size; i++) {
+        cout << array[i] << " ";
+    } // for end
+
+    cout << endl;
 
     delete [] array;
     return 0;
