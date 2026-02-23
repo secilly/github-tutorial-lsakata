@@ -1,7 +1,4 @@
-// Lily Sakata
-// A424161
-// sfunctions.cpp
-
+// File: sfunctions.cpp
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -24,54 +21,40 @@ void swap_values(int& v1, int& v2) {
 // Post-Condition: returns the index of the smallest or largest number (depending on sorting order)
 int find_index_of_swap(bool desc, int a[], int start_index, int number_used) {
 
-    int target_index;
+    int target_index = start_index;
 
-    // find smallest number
-    if ( desc ) {
-        for (int i = start_index; i < number_used) {
-            if (a[i] < a[i + 1]) {
-                target_index = i;
-            }
-        } // for end
-        return target_index;
-    } // desc end
+    for (int i = start_index + 1; i < number_used; i++) {
+        if (desc) {
+            if (a[i] > a[target_index]) 
+                target_index = i; // Find largest for descending
+        } 
+        else {
+            if (a[i] < a[target_index]) 
+                target_index = i; // Find smallest for ascending
+        }
+    } // for end
 
-    // find largest number
-    else { 
-        for (int i = start_index; i < number_used) {
-            if (a[i] > a[i + 1]) {
-                target_index = i;
+    return target_index;
+
+} // def end
+
+    void sort(bool desc, int a[], int number_used, int index) {
+
+        if (index >= number_used) {
+            for (int i = 0; i < number_used; i++) {
+                cout << a[i];
+                if (i < number_used - 1) {
+                    cout << " ";
+                }
             } // for end
+            cout << endl;
         }
-        return target_index;
-    } // asc end
 
-} // def end
+        int swap_idx = find_index_of_swap(desc, a, index, number_used);
+        swap_values(a[index], a[swap_idx]);
+        sort(desc, a, number_used, index++);
 
-void sort(bool desc, int a[], int number_used, int index) {
-
-    if (a[index] == number_used) {
-        for (int i = 0; i < size; i++) {
-            cout << a[i];
-            if (i < size - 1) {
-                cout << " ";
-            }
-        } // for end
-    }
-    else if (bool) {
-        if (a[index] < number_used) {
-            swap_values(a[index], number_used]);
-            sort(desc, a[], number_used, index);
-        }
-    }
-    else {
-        if (a[index] > number_used) {
-            swap_values(a[index], number_used);
-            sort(desc, a[], number_used, index);
-        }
-    }
-
-} // def end
+    } // def end
 
 // Pre-Condition: takes in an ifstream object and string
 // Post-Condition: returns an integer representing the size of the file
