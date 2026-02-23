@@ -48,6 +48,7 @@ int main() {
     cin >> desc;
 
     // run sorting and print array once finished
+    int number_used = size, index(0);
     sort(desc, array, number_used, index);
 
     return 0;
