@@ -11,7 +11,7 @@ void printV (long int n);
 int main() {
 
     long int numInput;
-    cout << "Enter Integer: ";
+    cout << "Enter integer: ";
     cin >> numInput;
 
     // check user input
