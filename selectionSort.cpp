@@ -13,7 +13,7 @@ int main() {
 
     // get filename from user 
     string numFile;
-    istream numInput;
+    ifstream numInput;
     cout << "Enter filename: ";
     cin >> numFile;
     numInput.open(numFile);
@@ -29,8 +29,7 @@ int main() {
     int size = getFileSize(numInput, numFile);
 
     // create array of data
-    int* array = new int;
-    array = new int[size];
+    int* array = new int[size];
     getArray(numInput, numFile, array, size);
 
     // print raw data
@@ -51,6 +50,7 @@ int main() {
     int number_used = size, index(0);
     sort(desc, array, number_used, index);
 
-    return 0;
     delete [] array;
+    return 0;
+
 } // main end
