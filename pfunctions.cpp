@@ -15,11 +15,11 @@ using namespace std;
 bool isPalindrome(string s) {
 
     int size = s.size();
-    if (size <= 1) { // base case
+    if (size <= 1) { // base 
         return true;
     }
 
-    // recursion case
+    // recursive
     if (s[0] != s[size - 1]) { // if first and last indices do not match
         return false;
     }
