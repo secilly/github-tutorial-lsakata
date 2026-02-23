@@ -54,7 +54,7 @@ void sort(bool desc, int a[], int number_used, int index) {
 
     int swap_idx = find_index_of_swap(desc, a, index, number_used);
     swap_values(a[index], a[swap_idx]);
-    sort(desc, a, number_used, index++);
+    sort(desc, a, number_used, index+1);
 
 } // def end
 
