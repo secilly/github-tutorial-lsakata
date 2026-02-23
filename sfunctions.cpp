@@ -26,13 +26,13 @@ int find_index_of_swap(bool desc, int a[], int start_index, int number_used) {
     int target_index = start_index;
 
     for (int i = start_index + 1; i < number_used; i++) {
-        if (desc) {
+        if (desc) { // Find largest for descending
             if (a[i] > a[target_index]) 
-                target_index = i; // Find largest for descending
+                target_index = i; 
         } 
-        else {
+        else { // Find smallest for ascending
             if (a[i] < a[target_index]) 
-                target_index = i; // Find smallest for ascending
+                target_index = i; 
         }
     } // for end
 
@@ -44,20 +44,15 @@ int find_index_of_swap(bool desc, int a[], int start_index, int number_used) {
 // Post-Condition: prints out sorted array once finished selection sorting
 void sort(bool desc, int a[], int number_used, int index) {
 
+    // base
     if (index >= number_used - 1) {
-        for (int i = 0; i < number_used; i++) {
-            cout << a[i];
-            if (i < number_used - 1) {
-                cout << " ";
-            }
-        } // for end
-        cout << endl;
         return;
     }
 
-    int swap_idx = find_index_of_swap(desc, a, index, number_used);
-    swap_values(a[index], a[swap_idx]);
-    sort(desc, a, number_used, index+1);
+    // recursive
+    int swap_idx = find_index_of_swap(desc, a, index, number_used); // find max/min
+    swap_values(a[index], a[swap_idx]); // swap
+    sort(desc, a, number_used, index+1); // moves to next indice
 
 } // def end
 
@@ -82,12 +77,11 @@ int getFileSize(ifstream& inf, string fname) {
 void getArray(ifstream& in, string fname, int arr[], int size) {
 
     in.open(fname);
-    int next, i(0);
 
-    while (in >> next) {
-        arr[i] = next;
-        i++;
-    } // while end
+    // place input from file into array
+    for (int i = 0; i < size; i++) {
+        in >> arr[i];
+    } // for end
     
     in.close();
     
