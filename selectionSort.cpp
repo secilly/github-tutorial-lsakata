@@ -8,7 +8,6 @@
 #include <cstdlib>  // for exit
 using namespace std;
 #include "sheaders.h"
-#include "sfunctions.cpp"
 
 int main() {
 
