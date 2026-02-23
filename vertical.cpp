@@ -20,6 +20,7 @@ int main() {
         return 0;
     }
 
+    // print digits
     printV(numInput);
 
     return 0;
@@ -27,7 +28,7 @@ int main() {
 
 // Define printV() here
 // Pre-Condition: takes in an integer from user input
-// Post-Condition: recursively prints out each digit on its own line
+// Post-Condition: prints out each digit on its own line
 void printV(long int n) {
 
     if (n < 10) { // base case
