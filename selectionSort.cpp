@@ -29,7 +29,7 @@ int main() {
 
     // create array of data
     array = new int[size];
-    getArray(numInput, numFile, array[], size);
+    getArray(numInput, numFile, array, size);
 
     // print raw data
     cout << "Original array:" << endl;
@@ -46,10 +46,10 @@ int main() {
     cin >> desc;
 
     // run sorting
-    sort(desc, array[], number_used, index);
+    sort(desc, array, number_used, index);
 
     // print sorted array 
     cout << "Sorted Array:" << endl;
 
     return 0;
-}
+} // main end
