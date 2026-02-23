@@ -1,10 +1,12 @@
-// File: sfunctions.cpp
+// Lily Sakata
+// A424161
+// sfunctions.cpp
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cstdlib>
 using namespace std;
-
 #include "sheaders.h"
 
 // Function Definitions
@@ -42,7 +44,7 @@ int find_index_of_swap(bool desc, int a[], int start_index, int number_used) {
 // Post-Condition: prints out sorted array once finished selection sorting
 void sort(bool desc, int a[], int number_used, int index) {
 
-    if (index >= number_used) {
+    if (index >= number_used - 1) {
         for (int i = 0; i < number_used; i++) {
             cout << a[i];
             if (i < number_used - 1) {
@@ -50,9 +52,10 @@ void sort(bool desc, int a[], int number_used, int index) {
             }
         } // for end
         cout << endl;
+        return;
     }
 
-    int swap_idx = find_index_of_swap(desc, a, number_used, index);
+    int swap_idx = find_index_of_swap(desc, a, index, number_used);
     swap_values(a[index], a[swap_idx]);
     sort(desc, a, number_used, index+1);
 
