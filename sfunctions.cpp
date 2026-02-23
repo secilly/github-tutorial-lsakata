@@ -52,7 +52,7 @@ void sort(bool desc, int a[], int number_used, int index) {
         cout << endl;
     }
 
-    int swap_idx = find_index_of_swap(desc, a, index, number_used);
+    int swap_idx = find_index_of_swap(desc, a, number_used, index);
     swap_values(a[index], a[swap_idx]);
     sort(desc, a, number_used, index+1);
 
