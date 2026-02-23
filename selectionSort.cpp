@@ -24,10 +24,13 @@ int main() {
         cerr << "Cannot open " << numFile << endl;
     }
 
+    numInput.close(); // close file
+    
     // get size of input file
     int size = getFileSize(numInput, numFile);
 
     // create array of data
+    int* array = new int;
     array = new int[size];
     getArray(numInput, numFile, array, size);
 
@@ -45,11 +48,9 @@ int main() {
     cout << "Ascending (0) or Descending (1): ";
     cin >> desc;
 
-    // run sorting
+    // run sorting and print array once finished
     sort(desc, array, number_used, index);
 
-    // print sorted array 
-    cout << "Sorted Array:" << endl;
-
     return 0;
+    delete [] array;
 } // main end
