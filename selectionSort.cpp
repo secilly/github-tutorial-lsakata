@@ -21,6 +21,7 @@ int main() {
     // check filename
     if(numInput.fail()) {
         cerr << "Cannot open " << numFile << endl;
+        exit(1);
     }
 
     numInput.close(); // close file
