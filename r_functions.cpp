@@ -2,6 +2,9 @@
 // A424161
 // r_functions.cpp
 
+#include <iomanip>
+using namespace std;
+
 // Function Definitions
 // Pre-Condition: takes in an array of UndergradStudents and its size
 // Post-Condition: sorts the array by last name
@@ -9,7 +12,7 @@ void NameSort(UndergradStudents array[], int size) {
     UndergradStudents temp; 
     for (int i = 0; i < size - 1; i++) {
         for (int j = 0; j < size - i - 1; j++) {
-            if (array[j-1].last_name > array[j].last_name) { // compares consecutive last names in array
+            if (array[j].last_name > array[j + 1].last_name) { // compares consecutive last names in array
                 temp = array[j]; // if the ascii value is greater switches the array indices
                 array[j] = array[j + 1];
                 array[j + 1] = temp;
@@ -21,19 +24,26 @@ void NameSort(UndergradStudents array[], int size) {
 // Pre-Condition: takes in an array of UndergradStudents and its size by reference
 // Post-Condition: processes up to 20 entries and puts into an UndergradStudents array
 void InitializeStructures(UndergradStudents us[], int &size) {
-
-    for (int i = 0; i <= 19; i++) {
+    size = 0;
+    string first_name, last_name, major;
+    double GPA1, GPA2, GPA3, GPA4;
+    for (int i = 0; i < 20; i++) {
         if (i < 9) { // for first 9 indices
-            string first_name, last_name;
-            double GPA, GPA1, GPA2, GPA3, GPA4;
             // get user input
-            while (first_name != 'x' || first_name != 'X') { // runs until user quits
-                cout << "Student 0" << i + 1 << ":Enter first name (or x to quit): ";
-                cin >> first_name;
+            cout << "Student 0" << i + 1 << ":Enter first name (or x to quit): ";
+            cin >> first_name;
+            if (first_name == "x" || first_name == "X") { // runs until user quits
+                break;
+            }
+            else {
+                size++; 
                 us[i].first_name = first_name;
                 cout << "Student 0" << i + 1 << ":Enter last name: ";
                 cin >> last_name; 
                 us[i].last_name = last_name;
+                cout << "Student 0" << i + 1 << ":Enter major: ";
+                cin >> major;
+                us[i].major = major;
                 cout << "Student 0" << i + 1 << ":Enter GPA Year 1: ";
                 cin >> GPA1;
                 cout << "Student 0" << i + 1 << ":Enter GPA Year 2: ";
@@ -43,19 +53,22 @@ void InitializeStructures(UndergradStudents us[], int &size) {
                 cout << "Student 0" << i + 1 << ":Enter GPA Year 4: ";
                 cin >> GPA4; 
                 us[i].GPA = (GPA1 + GPA2 + GPA3 + GPA4) / 4; // takes average of the GPAS
-            } // while end
+            } 
         }
-        if (i >= 9 && i <= 19) { // for tenth indice to twentieth
-            string first_name, last_name;
-            double GPA, GPA1, GPA2, GPA3, GPA4;
+        if (i >= 9 && i < 20) { // for tenth indice to twentieth
             // get user input
-            while (first_name != 'x' || first_name != 'X') { // runs until user quits
-                cout << "Student " << i + 1 << ":Enter first name (or x to quit): ";
-                cin >> first_name;
+            if (first_name == "x" || first_name == "X") {
+                break;
+            }
+            else {
+                size++;
                 us[i].first_name = first_name;
                 cout << "Student " << i + 1 << ":Enter last name: ";
                 cin >> last_name; 
                 us[i].last_name = last_name;
+                cout << "Student " << i + 1 << ":Enter major: ";
+                cin >> major;
+                us[i].major = major;
                 cout << "Student " << i + 1 << ":Enter GPA Year 1: ";
                 cin >> GPA1;
                 cout << "Student " << i + 1 << ":Enter GPA Year 2: ";
@@ -65,7 +78,7 @@ void InitializeStructures(UndergradStudents us[], int &size) {
                 cout << "Student " << i + 1 << ":Enter GPA Year 4: ";
                 cin >> GPA4; 
                 us[i].GPA = (GPA1 + GPA2 + GPA3 + GPA4) / 4; // takes average of the GPAS
-            } // while end
+            } 
         } // runs up until there are twenty indices
     } // for end
 } // def end
@@ -77,10 +90,9 @@ void WriteResults(ofstream &outf, UndergradStudents us[], int size) {
     outf.open(OUTPUTFILE);
 
     NameSort(us, size); // sorts us[]
-
-    cout << "These are the results sorted by last name:" << endl;
     // prints out us[] that is sorted by last name
-    outf << setprecision(2); // two decimal points
+    cout << "These are the results sorted by last name:" << endl;
+    outf << fixed << setprecision(2); // two decimal points
     for (int i = 0; i < size; i++) {
         outf << "ID# " << i + 1 << ": " 
         << us[i].first_name << ": " 
